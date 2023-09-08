@@ -1,20 +1,25 @@
 import React from "react";
+import { Fade } from "react-awesome-reveal";
 import { styled } from "styled-components";
 
 const Section = ({ title, description, leftBtn, rightBtn, backgroundImg }) => {
   return (
-    <Wrap backgroundImg={backgroundImg}>
-      <ItemText>
-        <h1>{title}</h1>
-        <p>{description}</p>
-      </ItemText>
-      <Buttons>
-        <ButtonGroup>
-          <LeftButton>{leftBtn}</LeftButton>
-          {rightBtn && <RightButton>{rightBtn}</RightButton>}
-        </ButtonGroup>
-        <DownArrow src="./images/down-arrow.svg" />
-      </Buttons>
+    <Wrap backgroundimg={backgroundImg}>
+      <Fade triggerOnce duration={1000} direction="down">
+        <ItemText>
+          <h1>{title}</h1>
+          <p>{description}</p>
+        </ItemText>
+      </Fade>
+      <Fade triggerOnce duration={1000} direction="down">
+        <Buttons>
+          <ButtonGroup>
+            <LeftButton>{leftBtn}</LeftButton>
+            {rightBtn && <RightButton>{rightBtn}</RightButton>}
+          </ButtonGroup>
+          <DownArrow src="./images/down-arrow.svg" />
+        </Buttons>
+      </Fade>
     </Wrap>
   );
 };
@@ -24,7 +29,7 @@ export default Section;
 const Wrap = styled.div`
   width: 100vw;
   height: 100vh;
-  background-image: url("/images/${(props) => props.backgroundImg}");
+  background-image: url("/images/${(props) => props.backgroundimg}");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -42,7 +47,7 @@ const ItemText = styled.div`
 
 const ButtonGroup = styled.div`
   display: flex;
-  margin-bottom: 30px;
+  margin-: 30px;
   @media (max-width: 768px) {
     flex-direction: column;
   }
